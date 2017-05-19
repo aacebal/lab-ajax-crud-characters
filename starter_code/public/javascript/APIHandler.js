@@ -8,6 +8,7 @@ class APIHandler {
       url: "https://ih-api.herokuapp.com/characters",
       method: "GET",
       success: function (fullList){
+        $('.character-info').remove();
         fullList.forEach((oneCharacter) => {
           const newCharacter =
           `<div class="character-info">
@@ -48,7 +49,10 @@ class APIHandler {
         method: "POST",
         data: characterInfo,
         success: function (theCharacter){
-          console.log (theCharacter);
+          $('.name').append(theCharacter.name);
+          $('.occupation').append(theCharacter.occupation);
+          $('.debt').append(theCharacter.debt);
+          $('.weapon').append(theCharacter.weapon);
         },
         error: function (err) {
           console.log(err);
@@ -62,7 +66,10 @@ class APIHandler {
       method: "PUT",
       data: characterChanges,
       success: function (theCharacter){
-        console.log (theCharacter);
+        $('.name').append(theCharacter.name);
+        $('.occupation').append(theCharacter.occupation);
+        $('.debt').append(theCharacter.debt);
+        $('.weapon').append(theCharacter.weapon);
       },
       error: function (err) {
         console.log(err);
